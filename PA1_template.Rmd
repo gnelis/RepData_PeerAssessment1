@@ -9,7 +9,7 @@ output:
 ## Loading and preprocessing the data
 
 First, we import the packages we will use in the assignment. The original file is unziped and then we can read the data directly from the source file.
-```{r Data Import, message=FALSE}
+```{r , message=FALSE}
 library(dplyr)
 library(data.table)
 library(ggplot2)
@@ -23,7 +23,7 @@ dt<-fread('activity.csv')
 To know the number of steps taken per day, we group the data and calculate the sum of steps for each day. Missing values are filtered from the calculation. The histogram is plotted next.
 
 
-```{r Data Anaysis, message=FALSE}
+```{r , message=FALSE}
 options(scipen=1, digits=2)
 per_day<-dt %>% group_by(date)%>% 
     filter(!is.na(steps)) %>% 
@@ -42,7 +42,7 @@ According to our calculations, the **mean value** is `r mean_value` and the **me
 ## What is the average daily activity pattern?
 
 Next, we calculate the average number of steps by time interval. The procedure is similar as before, but we know group by 'interval' and compute the mean value for each one.
-```{r Average Daily Acitivty, message = FALSE}
+```{r , message = FALSE}
 
 by_interval<-dt%>%
     filter(!is.na(steps))%>%
@@ -62,7 +62,7 @@ The plot shows that the average number steps is front loaded: higher in the morn
 ## Imputing missing values
 The imputation process is based on assigning the average step number for each interval. We look for each 'NA' value in the 'steps' column, look for the corresponding average number in 'by_interval' dataframe and store them in a vector, which is later assigned to a new dataset. The histogram for the new dataset is plotted.
 
-```{r Data Imputation, message = FALSE}
+```{r , message = FALSE}
 
 imputed_data<-with(by_interval,
                     avg_steps[match(dt$interval[is.na(dt$steps)],interval)])
@@ -88,7 +88,7 @@ The step number distribution is quite similar, but with a higher data count and 
 
 First, we assign a new column indicating if the record corresponds to a weekday or the weekend. Then, the average step count is calculated just like before, and a time series grouped by type of day is plotted.
 
-```{r Weekday/Weekend activity pattern, message = FALSE}
+```{r , message = FALSE}
 dt_imputed$Is_Wday<-factor(isWeekday(dt$date, wday=1:5),
                            levels=c(TRUE, FALSE), 
                            labels=c('Weekday','Weekend')) 

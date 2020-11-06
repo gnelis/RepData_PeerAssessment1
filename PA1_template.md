@@ -36,7 +36,7 @@ ggplot(data = per_day, aes(total))+
     labs(title = "Distributions of Steps per day", x="Total Steps", y = 'Count')
 ```
 
-![](PA1_template_files/figure-html/Data Anaysis-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
 ```r
 mean_value<-mean(per_day$total)
@@ -61,7 +61,7 @@ ggplot(data = by_interval, aes(x=interval, y=avg_steps))+
          y = 'Average Steps')
 ```
 
-![](PA1_template_files/figure-html/Average Daily Acitivty-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ```r
 max_interval<-by_interval$interval[which.max(by_interval$avg_steps)]
@@ -88,7 +88,7 @@ ggplot(data = per_day_imp, aes(total))+
               x="Total Steps", y = 'Count')
 ```
 
-![](PA1_template_files/figure-html/Data Imputation-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ```r
 mean_value_imp<-mean(per_day_imp$total)
@@ -120,6 +120,6 @@ ggplot(data=by_interval_imp,aes(x=interval,y=avg_steps))+
          y = 'Average Steps')
 ```
 
-![](PA1_template_files/figure-html/Weekday/Weekend activity pattern-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 Both time series follow the same pattern, but the weekdays show a higher step count in the morning, which is expected as the work day starts early during the week. At night, on the other hand, there is a higher step count in the weekends, since people tend to sleep later on those days.
